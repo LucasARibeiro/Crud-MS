@@ -28,7 +28,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class LigacaoResourceTest {
-/*    @Mock
+    @Mock
     private LigacaoService ligacaoService;
 
     @InjectMocks
@@ -117,7 +117,7 @@ class LigacaoResourceTest {
         listaLigacoesDto.add(ligacaoDTO);
         listaLigacoesDto.add(ligacaoDto2);
 
-        Pageable pageable = PageRequest.of(0,1);
+        Pageable pageable = PageRequest.of(0, 1);
         doReturn(listaLigacoesDto).when(ligacaoService).listarTodos(pageable);
 
         MockMvc mockMvc = MockMvcBuilders
@@ -135,5 +135,5 @@ class LigacaoResourceTest {
 
         verify(ligacaoService).listarTodos(any());
     }
-*/
+
 }

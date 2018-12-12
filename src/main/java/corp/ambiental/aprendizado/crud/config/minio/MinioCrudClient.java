@@ -22,10 +22,10 @@ public class MinioCrudClient {
         if (Objects.isNull(minioClient)) {
             try {
                 this.minioClient = new MinioClient(minioProperties.getUrlMinio(),
-                        minioProperties.getAcessKey(), minioProperties.getSecretKey());
+                        minioProperties.getAccessKey(), minioProperties.getSecretKey());
 
             } catch (Exception e) {
-                throw new Error("Erro Desconhecido");
+                throw new Error("Erro ao buscar as configurações do minio");
             }
         }
         return minioClient;

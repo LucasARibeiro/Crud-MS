@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 import java.util.Objects;
@@ -73,6 +74,13 @@ public class LigacaoResource {
         );
 
         return ResponseEntity.ok().body(ligacaoService.listarTodos(pageable));
+    }
+
+    @GetMapping(value = "/enviarAoMinio/nomeBucket/{nomeBucket}/nomeArquivo/{nomeArquivo}")
+    public ResponseEntity listarTodosEEnviarAoMinio(@PathVariable String nomeBucket, @PathVariable String nomeArquivo) throws IOException {
+
+        return ResponseEntity.ok().body(ligacaoService.salvarArquivoMinio(nomeBucket,nomeArquivo));
+
     }
 
 }

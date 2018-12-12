@@ -31,7 +31,7 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class OrdemServicoResourceTest {
-/*
+
     @Mock
     private OrdemServicoService ordemServicoService;
 
@@ -50,7 +50,7 @@ class OrdemServicoResourceTest {
     private final String URL = "/api/cadastro/ordemSevico";
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() {
 
         ordemServico = OrdemServicoEnvironment.criar();
         ordemServicoDto = OrdemServicoDTOEnvironment.criar(1L);
@@ -62,7 +62,7 @@ class OrdemServicoResourceTest {
     }
 
     @Test
-    void testCriarOS(){
+    void testCriarOS() {
         doReturn(ordemServicoDto).when(ordemServicoService).criar(any(OrdemServicoDTO.class));
 
         given()
@@ -77,7 +77,7 @@ class OrdemServicoResourceTest {
     }
 
     @Test
-    void testConsultarPeloId(){
+    void testConsultarPeloId() {
 
         doReturn(ordemServicoDto).when(ordemServicoService).buscarPorIdOS(anyLong());
 
@@ -91,7 +91,7 @@ class OrdemServicoResourceTest {
 
     @Test
     @DisplayName("Deve listar todas as Ordem de Serviços")
-    void testListarTodos(){
+    void testListarTodos() {
         List<OrdemServicoDTO> listaOrdemServicoDto = new ArrayList<>();
 
         listaOrdemServicoDto.add(ordemServiceDto1);
@@ -119,7 +119,7 @@ class OrdemServicoResourceTest {
 
     @Test
     @DisplayName("Deve atualizar uma Ordem de Servico")
-    void testAtualizarOdemServico(){
+    void testAtualizarOdemServico() {
         doReturn(ordemServicoDto).when(ordemServicoService).atualizar(any(OrdemServicoDTO.class));
 
         given()
@@ -134,7 +134,7 @@ class OrdemServicoResourceTest {
 
     @Test
     @DisplayName("Deve excluir uma Ordem de Servico")
-    void testExcluirOrdemServico(){
+    void testExcluirOrdemServico() {
         doNothing().when(ordemServicoService).excluir(anyLong());
 
         given()
@@ -144,5 +144,5 @@ class OrdemServicoResourceTest {
                 .statusCode(204);
         verify(ordemServicoService).excluir(anyLong());
     }
-    */
+
 }

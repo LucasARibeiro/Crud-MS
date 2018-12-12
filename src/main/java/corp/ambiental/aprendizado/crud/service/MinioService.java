@@ -7,21 +7,21 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 
+
 @Service
 public class MinioService {
 
     @Autowired
     private MinioCrudClient minioCrudClient;
 
-    public String uploadArquivo(final File arquivo, final String contentType) {
-        String nomeBucket = "Arquivo-Crud";
+    public String uploadArquivo(final File arquivo, final String nomeBucket) {
 
         try {
             MinioClient minioClient = getMinioClientECriaBucket(nomeBucket);
-            minioClient.putObject(nomeBucket, arquivo.getName(), arquivo.getPath(), contentType);
+            minioClient.putObject(nomeBucket, arquivo.getName(), arquivo.getPath());
             return minioClient.presignedGetObject(nomeBucket, arquivo.getName());
         } catch (Exception e) {
-            throw new Error("Erro Desconhecido");
+            throw new Error("Erro Ao Conectar no Minio");
         }
     }
 
@@ -36,15 +36,5 @@ public class MinioService {
         }
         return minioClient;
     }
-
-    public static void main(String[] args) {
-
-        File file = new File("teste");
-
-        MinioService minioService = new MinioService();
-
-        minioService.uploadArquivo(file,"seila");
-    }
-
 }
 

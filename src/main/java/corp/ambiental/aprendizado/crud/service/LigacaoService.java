@@ -1,8 +1,8 @@
 package corp.ambiental.aprendizado.crud.service;
 
 import corp.ambiental.aprendizado.crud.model.Cliente;
-import corp.ambiental.aprendizado.crud.model.dto.LigacaoDTO;
 import corp.ambiental.aprendizado.crud.model.Ligacao;
+import corp.ambiental.aprendizado.crud.model.dto.LigacaoDTO;
 import corp.ambiental.aprendizado.crud.repository.ClienteRepository;
 import corp.ambiental.aprendizado.crud.repository.LigacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,6 +32,12 @@ public class LigacaoService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private MinioService minioService;
+
+    @Autowired
+    private ProcessadorArquivosService processadorArquivosService;
 
     public LigacaoDTO buscarPorIdLigacao(Long idLigacao) {
 
@@ -113,5 +122,22 @@ public class LigacaoService {
 
     private LigacaoDTO toDto(Ligacao ligacao) {
         return conversionService.convert(ligacao, LigacaoDTO.class);
+    }
+
+    public File salvarArquivoMinio(final String nomeBucket, final String nomeArquivo) throws IOException {
+        File file = new File(nomeArquivo + ".csv");
+        FileWriter fileWriter = new FileWriter(file);
+
+        processadorArquivosService.criarArquivo(fileWriter);
+
+        minioService.uploadArquivo(file, nomeBucket);
+
+        return file;
+
+    }
+
+    public Iterable<Ligacao> listarTodos() {
+
+        return ligacaoRepository.findAll();
     }
 }

@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class ClienteResourceTest {
-/*
+
     @Mock
     private ClienteService mockClienteService;
 
@@ -98,5 +98,5 @@ public class ClienteResourceTest {
 
         verify(mockClienteService).excluir(anyLong());
     }
-*/
+
 }

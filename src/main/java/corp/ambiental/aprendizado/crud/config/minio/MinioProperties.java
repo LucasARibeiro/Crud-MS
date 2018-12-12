@@ -2,11 +2,12 @@ package corp.ambiental.aprendizado.crud.config.minio;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+
 @ConfigurationProperties(prefix = "spring.minio")
 public class MinioProperties {
 
     private String urlMinio;
-    private String acessKey;
+    private String accessKey;
     private String secretKey;
 
     public String getUrlMinio() {
@@ -17,12 +18,12 @@ public class MinioProperties {
         this.urlMinio = urlMinio;
     }
 
-    public String getAcessKey() {
-        return acessKey;
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    public void setAcessKey(String acessKey) {
-        this.acessKey = acessKey;
+    public void setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
     }
 
     public String getSecretKey() {

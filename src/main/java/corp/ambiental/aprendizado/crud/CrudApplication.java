@@ -2,11 +2,13 @@ package corp.ambiental.aprendizado.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-@SpringBootApplication(scanBasePackages = "corp.ambiental.aprendizado")
+@EnableConfigurationProperties
+@SpringBootApplication(scanBasePackages = "corp.ambiental.aprendizado.crud")
 public class CrudApplication {
-
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		SpringApplication.run(CrudApplication.class, args);
+
 	}
 }

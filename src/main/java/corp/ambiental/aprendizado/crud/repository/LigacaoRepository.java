@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Repository
-public interface LigacaoRepository extends PagingAndSortingRepository<Ligacao,Long> {
+public interface LigacaoRepository extends  PagingAndSortingRepository<Ligacao,Long> {
 
     @Query("SELECT LIG FROM LIGACAO LIG WHERE LIG.cliente.id = :idCliente")
     List<Ligacao> findByIdCliente(@Param("idCliente") Long idCliente);
