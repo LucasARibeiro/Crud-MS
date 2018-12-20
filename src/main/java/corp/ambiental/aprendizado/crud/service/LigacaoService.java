@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +38,7 @@ public class LigacaoService {
     private MinioService minioService;
 
     @Autowired
-    private ProcessadorArquivosService processadorArquivosService;
+    private ArquivoService arquivoService;
 
     public LigacaoDTO buscarPorIdLigacao(Long idLigacao) {
 
@@ -128,7 +129,7 @@ public class LigacaoService {
         File file = new File(nomeArquivo + ".csv");
         FileWriter fileWriter = new FileWriter(file);
 
-        processadorArquivosService.criarArquivo(fileWriter);
+        arquivoService.criarArquivo(fileWriter);
 
         minioService.uploadArquivo(file, nomeBucket);
 
